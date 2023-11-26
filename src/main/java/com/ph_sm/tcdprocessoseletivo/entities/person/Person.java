@@ -1,26 +1,38 @@
 package com.ph_sm.tcdprocessoseletivo.entities.person;
 
+import javax.persistence.*;
 import java.util.Date;
 
 /**
  * Class representing a person entity.
  * Used to store the information of a person.
  */
+@MappedSuperclass
 public class Person {
 
     //<editor-fold defaultstate="collapsed" desc="Attributes">
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Date birthDate;
     private String cpf;
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Phone phone;
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Address address;
 
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Constructors">
 
-/**
+    /**
+     * Constructor method without parameters.
+     */
+    public Person() {}
+
+    /**
      * Constructor method without parameters.
      *
      * @param name String containing the name.

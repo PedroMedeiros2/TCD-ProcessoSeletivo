@@ -1,5 +1,7 @@
 package com.ph_sm.tcdprocessoseletivo.entities.users;
 
+import javax.persistence.*;
+
 /**
  * Class representing the credentials of the users
  * id: Unique identifier of the user
@@ -7,16 +9,28 @@ package com.ph_sm.tcdprocessoseletivo.entities.users;
  * password: Password of the user
  * role: Role of the user
  */
+
+@Entity
 public class Credential {
+
     //<editor-fold defaultstate="collapsed" desc="Attributes">
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String email;
     private String password;
+    @Enumerated(EnumType.STRING)
     private Role role;
-
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Constructors">
+
+    /**
+     * Constructor method without parameters.
+     */
+    public Credential() {}
+
     /**
      * Constructor passing the parameters
      *
@@ -32,7 +46,6 @@ public class Credential {
         this.password = password;
         this.role = role;
     }
-
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Getters and Setters">
@@ -96,16 +109,14 @@ public class Credential {
      *
      * @return Role with the role of the user
      */
-    public Role getRole() {
-        return role;
-    }
+    public Role getRole() {return role;}
 
     /**
      * Set the role of the user
      *
      * @param role Role with the role of the user
      */
-    public void setRole(Role role) {
-        this.role = role;
-    }
+    public void setRole(Role role) {this.role = role;}
+
+    //</editor-fold>
 }

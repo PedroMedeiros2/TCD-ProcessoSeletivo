@@ -1,13 +1,23 @@
 package com.ph_sm.tcdprocessoseletivo.entities.person;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Class representing an address entity.
  * Used to store the address information of a person.
  * It is utilized within the Person class.
  */
+
+@Entity
 public class Address {
 
     //<editor-fold defaultstate="collapsed" desc="Attributes">
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String address;
     private String city;
@@ -16,6 +26,11 @@ public class Address {
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Constructors">
+
+    /**
+     * Constructor method without parameters.
+     */
+    public Address() {}
 
     /**
      * Constructor method without parameters.
