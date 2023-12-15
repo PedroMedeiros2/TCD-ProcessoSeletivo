@@ -3,6 +3,7 @@ package com.ph_sm.tcdprocessoseletivo.services.users;
 import com.ph_sm.tcdprocessoseletivo.entities.credential.Credential;
 import com.ph_sm.tcdprocessoseletivo.entities.users.User;
 import com.ph_sm.tcdprocessoseletivo.services.credential.CredentialService;
+import com.ph_sm.tcdprocessoseletivo.services.credential.CredentialServiceLocal;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -16,13 +17,11 @@ public class UserService implements UserServiceLocal {
     private EntityManager em;
 
     @Inject
-    CredentialService credentialService;
+    CredentialServiceLocal credentialService;
 
     @Override
     public void persist(User user) {
-        Credential credential = user.getCredential();
-        credential = credentialService.persist(credential);
-        user.setCredential(credential);
+        credentialService.persist(user.getCredential());
         em.persist(user);
     }
 
@@ -32,7 +31,7 @@ public class UserService implements UserServiceLocal {
                 .setParameter("email", email)
                 .getSingleResult();
 
-        User user = em.createQuery("SELECT u FROM User u WHERE u.credential = :credential", User.class)
+        User user = em.createQuery("SELECT u FROM users_tb u WHERE u.credential = :credential", User.class)
                 .setParameter("credential", credential)
                 .getSingleResult();
 
@@ -41,7 +40,7 @@ public class UserService implements UserServiceLocal {
 
     @Override
     public User findUserById(Long id) {
-        User user = em.createQuery("SELECT u FROM User u WHERE u.id = :id", User.class)
+        User user = em.createQuery("SELECT u FROM users_tb u WHERE u.id = :id", User.class)
                 .setParameter("id", id)
                 .getSingleResult();
 

@@ -14,9 +14,8 @@ public interface CredentialServiceLocal {
      * Persist a credential in the database
      *
      * @param credential Credential to be persisted
-     * @return Credential persisted
      */
-    Credential persist(Credential credential);
+    void persist(Credential credential);
 
     /**
      * Find a credential by email

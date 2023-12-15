@@ -3,7 +3,7 @@ package com.ph_sm.tcdprocessoseletivo.entities.users;
 import com.ph_sm.tcdprocessoseletivo.entities.credential.Credential;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 
 /**
@@ -13,6 +13,7 @@ import java.util.Date;
  * A user can be a candidate, editor or administrator.
  */
 @Entity
+@Table(name = "users_tb")
 public class User {
     private static final long serialVersionUID = 1L;
     @Id
@@ -20,8 +21,8 @@ public class User {
     private Long id;
     @Column(length = 255, nullable = false)
     private String name;
-    @Temporal(TemporalType.DATE)
-    private Date birthDate;
+
+    private LocalDate birthDate;
     @Column(length = 11, nullable = false, unique = true)
     private String cpf;
     @Enumerated(EnumType.STRING)
@@ -80,7 +81,7 @@ public class User {
      *
      * @return Date with the birth date of the user
      */
-    public Date getBirthDate() {
+    public LocalDate  getBirthDate() {
         return birthDate;
     }
 
@@ -89,7 +90,7 @@ public class User {
      *
      * @param birthDate Date with the birth date of the user
      */
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 

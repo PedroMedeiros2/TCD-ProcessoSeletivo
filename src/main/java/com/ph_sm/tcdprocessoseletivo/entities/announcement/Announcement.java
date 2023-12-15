@@ -3,6 +3,7 @@ package com.ph_sm.tcdprocessoseletivo.entities.announcement;
 import com.ph_sm.tcdprocessoseletivo.entities.selectionprocess.SelectionProcess;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -18,8 +19,7 @@ public class Announcement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private Integer number;
-    @Temporal(TemporalType.DATE)
-    private Date publicationDate;
+    private LocalDate publicationDate;
     private String description;
     private String link;
     @OneToMany(mappedBy = "announcement", cascade = CascadeType.ALL)
@@ -78,7 +78,7 @@ public class Announcement {
      *
      * @return Date with the publication date of the announcement
      */
-    public Date getPublicationDate() {
+    public LocalDate getPublicationDate() {
         return publicationDate;
     }
 
@@ -87,7 +87,7 @@ public class Announcement {
      *
      * @param publicationDate Date with the publication date of the announcement
      */
-    public void setPublicationDate(Date publicationDate) {
+    public void setPublicationDate(LocalDate publicationDate) {
         this.publicationDate = publicationDate;
     }
 

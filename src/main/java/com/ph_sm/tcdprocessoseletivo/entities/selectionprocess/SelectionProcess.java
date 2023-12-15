@@ -3,6 +3,7 @@ package com.ph_sm.tcdprocessoseletivo.entities.selectionprocess;
 import com.ph_sm.tcdprocessoseletivo.entities.announcement.Announcement;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -15,10 +16,8 @@ public class SelectionProcess {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String title;
-    @Temporal(TemporalType.DATE)
-    private Date startDate;
-    @Temporal(TemporalType.DATE)
-    private Date endDate;
+    private LocalDate  startDate;
+    private LocalDate endDate;
     @Enumerated(EnumType.STRING)
     private StatusSelectionProcess status;
     @OneToOne(cascade = CascadeType.ALL)
@@ -69,7 +68,7 @@ public class SelectionProcess {
      * Getter method for startDate attribute.
      * @return startDate attribute.
      */
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
@@ -77,7 +76,7 @@ public class SelectionProcess {
      * Setter method for startDate attribute.
      * @param startDate startDate attribute.
      */
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
@@ -85,7 +84,7 @@ public class SelectionProcess {
      * Getter method for endDate attribute.
      * @return endDate attribute.
      */
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
@@ -93,7 +92,7 @@ public class SelectionProcess {
      * Setter method for endDate attribute.
      * @param endDate endDate attribute.
      */
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 

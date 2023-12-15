@@ -3,34 +3,19 @@ package com.ph_sm.tcdprocessoseletivo.services.credential;
 import com.ph_sm.tcdprocessoseletivo.entities.credential.Credential;
 
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.security.enterprise.identitystore.Pbkdf2PasswordHash;
-import java.util.HashMap;
-import java.util.Map;
+
 
 @Stateless
 public class CredentialService implements CredentialServiceLocal {
-
-    @Inject
-    Pbkdf2PasswordHash passwordHasher;
     @PersistenceContext
     private EntityManager em;
 
+
     @Override
-    public Credential persist(Credential credential) {
-        Map<String, String> parameters = new HashMap<>();
-        parameters.put("Pbkdf2PasswordHash.Iterations", "3071");
-        parameters.put("Pbkdf2PasswordHash.Algorithm", "PBKDF2WithHmacSHA512");
-        parameters.put("Pbkdf2PasswordHash.SaltSizeBytes", "64");
-        passwordHasher.initialize(parameters);
-
-        credential.setPassword(passwordHasher.generate(credential.getPassword().toCharArray()));
-
+    public void persist(Credential credential) {
         em.persist(credential);
-
-        return credential;
     }
 
     @Override

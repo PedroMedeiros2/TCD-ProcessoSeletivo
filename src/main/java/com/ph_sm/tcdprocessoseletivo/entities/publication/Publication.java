@@ -3,6 +3,7 @@ package com.ph_sm.tcdprocessoseletivo.entities.publication;
 import com.ph_sm.tcdprocessoseletivo.entities.users.User;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -19,8 +20,8 @@ public class Publication {
     private String title;
     @Column(length = 10000)
     private String content;
-    private Date publishDate;
-    private Date editDate;
+    private LocalDate publishDate;
+    private LocalDate editDate;
     @ManyToOne
     private User author;
     @Enumerated(EnumType.STRING)
@@ -95,7 +96,7 @@ public class Publication {
      * @return Date with the publish date of the publication
      */
 
-    public Date getPublishDate() {
+    public LocalDate getPublishDate() {
         return publishDate;
     }
 
@@ -104,7 +105,7 @@ public class Publication {
      *
      * @param publishDate Date with the publish date of the publication
      */
-    public void setPublishDate(Date publishDate) {
+    public void setPublishDate(LocalDate publishDate) {
         this.publishDate = publishDate;
     }
 
@@ -113,7 +114,7 @@ public class Publication {
      *
      * @return Date with the edit date of the publication
      */
-    public Date getEditDate() {
+    public LocalDate getEditDate() {
         return editDate;
     }
 
@@ -122,7 +123,7 @@ public class Publication {
      *
      * @param editDate Date with the edit date of the publication
      */
-    public void setEditDate(Date editDate) {
+    public void setEditDate(LocalDate editDate) {
         this.editDate = editDate;
     }
 

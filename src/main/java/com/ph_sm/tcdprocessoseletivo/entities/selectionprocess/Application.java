@@ -4,6 +4,7 @@ import com.ph_sm.tcdprocessoseletivo.entities.selectionprocess.SelectionProcess;
 import com.ph_sm.tcdprocessoseletivo.entities.users.User;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -22,29 +23,13 @@ public class Application {
     @ManyToOne
     @JoinColumn(name = "selection_process_id")
     private SelectionProcess selectionProcess;
-    private Date applicationDate;
+    private LocalDate applicationDate;
 
     //<editor-fold defaultstate="collapsed" desc="Constructors">
     /**
      * Constructor method without parameters.
      */
     public Application() {}
-
-    /**
-     * Constructor passing the parameters
-     *
-     * @param candidate Candidate of the application.
-     *                  Example: "User"
-     * @param selectionProcess Selection process of the application.
-     *                         Example: "SelectionProcess"
-     * @param applicationDate Application date of the application.
-     *                        Example: "2021-01-01"
-     */
-    public Application(User candidate, SelectionProcess selectionProcess, Date applicationDate) {
-        this.candidate = candidate;
-        this.selectionProcess = selectionProcess;
-        this.applicationDate = applicationDate;
-    }
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Getters and Setters">
@@ -101,7 +86,7 @@ public class Application {
      * Get the application date of the application.
      * @return The application date of the application.
      */
-    public Date getApplicationDate() {
+    public LocalDate getApplicationDate() {
         return applicationDate;
     }
 
@@ -109,7 +94,7 @@ public class Application {
      * Set the application date of the application.
      * @param applicationDate The application date of the application.
      */
-    public void setApplicationDate(Date applicationDate) {
+    public void setApplicationDate(LocalDate    applicationDate) {
         this.applicationDate = applicationDate;
     }
     //</editor-fold>
